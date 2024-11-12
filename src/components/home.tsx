@@ -85,10 +85,9 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           </tr>
         </thead>
         <tbody>
-          {frogs.map((frog) => (
+          {frogs.map((frog, index) => (
             <tr key={frog.id}>
-              {/* Minus 3 because there were test entires in the DB */}
-              <td>{frog.id - 3}</td>
+              <td>{index + 1}</td>
               <td>
                 <Link href={frog.url} target="_blank">
                   {frog.url}
