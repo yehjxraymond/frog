@@ -81,12 +81,14 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
       <table>
         <thead>
           <tr>
+            <th>Index</th>
             <th>URL</th>
           </tr>
         </thead>
         <tbody>
-          {frogs.map((frog) => (
+          {frogs.map((frog, index) => (
             <tr key={frog.id}>
+              <td>{index + 1}</td>
               <td>
                 <Link href={frog.url} target="_blank">
                   {frog.url}
