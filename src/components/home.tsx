@@ -56,7 +56,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const toggleScanner = () => setIsScannerOpen(!isScannerOpen);
 
   return (
-    <div className="prose dark:prose-invert m-auto">
+    <div className="prose dark:prose-invert m-auto p-4">
       <div>
         <h1>Frog Finder</h1>
         <h2>Total frog friends you can find here: {frogs.length}</h2>
@@ -107,7 +107,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
         <tbody>
           <tr>
             <td>creator</td>
-            <td>
+            <td className="overflow-hidden whitespace-nowrap overflow-x-auto">
               <Link href={creatorFrog} target="_blank">
                 {creatorFrog}
               </Link>
@@ -116,7 +116,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           {frogs.map((frog, index) => (
             <tr key={frog.id}>
               <td>{frogs.length - index}</td>
-              <td>
+              <td className="overflow-hidden whitespace-nowrap overflow-x-auto">
                 <Link href={frog.url} target="_blank">
                   {frog.url}
                 </Link>
