@@ -10,9 +10,10 @@ export async function postFrog(url: string) {
   if (!regex.test(url)) {
     throw new Error("Invalid URL format");
   }
+  const formattedUrl = url.replace("http://", "https://");
   const frog = await prisma.frog.create({
     data: {
-      url,
+      url: formattedUrl,
     },
   });
   return frog;
