@@ -31,7 +31,6 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
       postFrog(data)
         .then(() => {
           alert("Frog added!");
-          setIsScannerOpen(false);
         })
         .catch((error) => {
           if (error instanceof Error) {
