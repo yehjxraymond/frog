@@ -10,15 +10,10 @@ export async function postFrog(url: string) {
   if (!regex.test(url)) {
     throw new Error("Invalid URL format");
   }
-  // Check for duplicates and add to the database if unique
-  try {
-    const frog = await prisma.frog.create({
-      data: {
-        url,
-      },
-    });
-    return frog;
-  } catch (error) {
-    throw new Error("Error adding URL to the database");
-  }
+  const frog = await prisma.frog.create({
+    data: {
+      url,
+    },
+  });
+  return frog;
 }
