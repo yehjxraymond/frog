@@ -1,8 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { fetchFrogs } from "./fetchFrogs";
 import { postFrog } from "./postFrog";
+import { Frog } from "@prisma/client";
+import Link from "next/link";
 
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -30,6 +30,18 @@ export default function Home() {
 
   return (
     <div>
+      <div>
+        <h1 className="text-2xl">Frog Finder</h1>
+        <p>
+          A directory of frog friends you can find at Devcon. Add you frog url
+          by scanning your frog QR code and add the url that has the format of
+          (http://dc7.getfrogs.xyz/necklace/...) here.
+        </p>
+        <p>
+          Then add friends by going down the list and clicking on each frog url
+          to add them!
+        </p>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -39,6 +51,9 @@ export default function Home() {
         />
         <button type="submit">Submit</button>
       </form>
+      <div className="text-2xl">
+        Total frog friends you can find here: {frogs.length}
+      </div>
       <table>
         <thead>
           <tr>
@@ -48,7 +63,9 @@ export default function Home() {
         <tbody>
           {frogs.map((frog) => (
             <tr key={frog.id}>
-              <td>{frog.url}</td>
+              <td>
+                <Link href={frog.url} target="_blank">{frog.url}</Link>
+              </td>
             </tr>
           ))}
         </tbody>

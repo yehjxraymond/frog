@@ -1,5 +1,8 @@
 'use server'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
+
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
