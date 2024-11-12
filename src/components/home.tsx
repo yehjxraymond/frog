@@ -125,12 +125,22 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           ))}
         </tbody>
       </table>
-      <small>
-        Pool creator:{" "}
-        <Link href={creatorX} target="_blank">
-          Raymond
-        </Link>
-      </small>
+      <div>
+        <small>
+          Pool creator:{" "}
+          <Link href={creatorX} target="_blank">
+            Raymond
+          </Link>
+        </small>
+      </div>
+      <div>
+        <small>
+          Github:{" "}
+          <Link href="https://github.com/yehjxraymond/frog" target="_blank">
+            Frog
+          </Link>
+        </small>
+      </div>
     </div>
   );
 };
