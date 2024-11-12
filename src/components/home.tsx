@@ -15,6 +15,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
     try {
       await postFrog(url);
       alert("Frog added!");
+      window.location.reload();
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
@@ -31,7 +32,6 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
         .then(() => {
           alert("Frog added!");
           setIsScannerOpen(false);
-          window.location.reload();
         })
         .catch((error) => {
           if (error instanceof Error) {
