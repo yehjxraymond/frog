@@ -5,9 +5,12 @@ import { Frog } from "@prisma/client";
 import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "@/components/ui/input";
 
 const creatorFrog =
   "https://dc7.getfrogs.xyz/necklace/83c0c816-27e9-4068-9ba6-5d08ae326dc9";
+const creatorX = "https://x.com/TheRaymondYeh";
 
 export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const [url, setUrl] = useState("");
@@ -53,33 +56,47 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const toggleScanner = () => setIsScannerOpen(!isScannerOpen);
 
   return (
-    <div>
+    <div className="prose dark:prose-invert m-auto">
       <div>
-        <h1 className="text-2xl">Frog Finder</h1>
+        <h1>Frog Finder</h1>
+        <h2>Total frog friends you can find here: {frogs.length}</h2>
+        <p>A pool of frog. To participate:</p>
+        <ul>
+          <li>
+            Scan your frog QR code using the button below to add yourself to the
+            list
+          </li>
+          <li>
+            Add other frog friends by clicking on their url to send them an
+            invite
+          </li>
+        </ul>
         <p>
-          A directory of frog friends you can find at Devcon. Add you frog url
-          by scanning your frog QR code and add the url that has the format of
-          (http://dc7.getfrogs.xyz/necklace/...) here.
+          Note: The list is in reverse order, that means new frogs will be added
+          to the top of the list! Share this page with your friends to help them
+          score the freebies!
         </p>
         <p>
-          Then add friends by going down the list and clicking on each frog url
-          to add them!
+          Note2: To remember where you&apos;ve stopped just remember the index
+          number where you&apos;ve started and stopped.
         </p>
       </div>
-      <button onClick={toggleScanner}>Scan QR Code</button>
+      <Button className="my-6 w-full" size="lg" onClick={toggleScanner}>
+        Scan my frog
+      </Button>
       {isScannerOpen && <Scanner onScan={handleScan} onError={handleError} />}
-      <form onSubmit={handleSubmit}>
-        <input
+      <form onSubmit={handleSubmit} className="my-6">
+        <Input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter Frog URL"
+          className="w-full mb-2"
         />
-        <button type="submit">Submit</button>
+        <div>
+          <Button type="submit">Submit Frog URL Manually</Button>
+        </div>
       </form>
-      <div className="text-2xl">
-        Total frog friends you can find here: {frogs.length}
-      </div>
       <table>
         <thead>
           <tr>
@@ -108,6 +125,12 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           ))}
         </tbody>
       </table>
+      <small>
+        Pool creator:{" "}
+        <Link href={creatorX} target="_blank">
+          Raymond
+        </Link>
+      </small>
     </div>
   );
 };
