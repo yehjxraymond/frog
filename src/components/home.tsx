@@ -2,9 +2,9 @@
 
 import { postFrog } from "@/app/postFrog";
 import { Frog } from "@prisma/client";
+import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import Link from "next/link";
 import { useState } from "react";
-import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 
 export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const [url, setUrl] = useState("");
@@ -86,7 +86,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           </tr>
         </thead>
         <tbody>
-          {frogs.map((frog, index) => (
+          {frogs.map((frog) => (
             <tr key={frog.id}>
               {/* Minus 3 because there were test entires in the DB */}
               <td>{frog.id - 3}</td>
