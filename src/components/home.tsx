@@ -1,26 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { postFrog } from "@/app/postFrog";
 import { Frog } from "@prisma/client";
 import Link from "next/link";
-import { fetchFrogs } from "@/app/fetchFrogs";
-import { postFrog } from "@/app/postFrog";
+import { useState } from "react";
 
-export const Home = () => {
+export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const [url, setUrl] = useState("");
-  const [frogs, setFrogs] = useState<Frog[]>([]);
-
-  // Fetch all frogs on component mount
-  useEffect(() => {
-    fetchFrogs().then((frogs) => setFrogs(frogs));
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const newFrog = await postFrog(url);
-      setFrogs([...frogs, newFrog]);
-      setUrl("");
+      await postFrog(url);
+      alert("Frog added!");
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
@@ -66,7 +58,9 @@ export const Home = () => {
           {frogs.map((frog) => (
             <tr key={frog.id}>
               <td>
-                <Link href={frog.url} target="_blank">{frog.url}</Link>
+                <Link href={frog.url} target="_blank">
+                  {frog.url}
+                </Link>
               </td>
             </tr>
           ))}
@@ -74,4 +68,4 @@ export const Home = () => {
       </table>
     </div>
   );
-}
+};
