@@ -6,6 +6,6 @@ import { fetchFrogs } from "@/app/fetchFrogs";
 
 export default async function HomePage() {
   const frogs = await fetchFrogs();
-  const sortedFrogs = frogs.sort((a, b) => a.id - b.id);
+  const sortedFrogs = frogs.sort((a, b) => b.id - a.id);
   return <Home frogs={sortedFrogs} />;
 }

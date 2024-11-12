@@ -6,6 +6,9 @@ import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import Link from "next/link";
 import { useState } from "react";
 
+const creatorFrog =
+  "https://dc7.getfrogs.xyz/necklace/83c0c816-27e9-4068-9ba6-5d08ae326dc9";
+
 export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const [url, setUrl] = useState("");
   const [isScannerOpen, setIsScannerOpen] = useState(false);
@@ -85,9 +88,17 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>creator</td>
+            <td>
+              <Link href={creatorFrog} target="_blank">
+                {creatorFrog}
+              </Link>
+            </td>
+          </tr>
           {frogs.map((frog, index) => (
             <tr key={frog.id}>
-              <td>{index + 1}</td>
+              <td>{frogs.length - index}</td>
               <td>
                 <Link href={frog.url} target="_blank">
                   {frog.url}
