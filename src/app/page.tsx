@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { fetchFrogs } from "./fetchFrogs";
 import { postFrog } from "./postFrog";
