@@ -22,12 +22,15 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
       await postFrog(url);
       alert("Frog added!");
       window.location.reload();
+      setUrl("");
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
       } else {
         console.error("An unknown error occurred");
       }
+      alert("Failed to add frog: Probably already in the pool.");
+      setUrl("");
     }
   };
 
