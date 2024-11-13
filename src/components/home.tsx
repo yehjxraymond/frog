@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 
 const creatorFrog =
   "https://dc7.getfrogs.xyz/necklace/83c0c816-27e9-4068-9ba6-5d08ae326dc9";
-const creatorX = "https://x.com/TheRaymondYeh";
+const telegram = "https://t.me/whitefables";
 
 export const Home = ({ frogs }: { frogs: Frog[] }) => {
   const [url, setUrl] = useState("");
@@ -67,7 +67,7 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
         <ul>
           <li>
             Scan your frog QR code using the button below to add yourself to the
-            list
+            top of list
           </li>
           <li>
             Add other frog friends by clicking on their url to send them an
@@ -75,14 +75,24 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           </li>
         </ul>
         <p>
-          Note: The list is in reverse order, that means new frogs will be added
-          to the top of the list! Share this page with your friends to help them
-          score the freebies!
-        </p>
-        <p>
-          Note2: To remember where you&apos;ve stopped just remember the index
+          Note1: To remember where you&apos;ve stopped just remember the index
           number where you&apos;ve started and stopped.
         </p>
+        <p>
+          Note2: I&apos;ve wrote about{" "}
+          <Link
+            href="https://geek.sg/blog/hunting-frogs-a-journey-through-devcon-frog-points-and-starting-a-movements"
+            target="_blank"
+          >
+            my experience building the froggo list
+          </Link>
+          . Also feel free to{" "}
+          <Link href={telegram} target="_blank">
+            say hi
+          </Link>
+          !
+        </p>
+        <div></div>
       </div>
       <Button className="my-6 w-full" size="lg" onClick={toggleScanner}>
         Scan my frog
@@ -128,14 +138,6 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           ))}
         </tbody>
       </table>
-      <div>
-        <small>
-          Pool creator:{" "}
-          <Link href={creatorX} target="_blank">
-            Raymond
-          </Link>
-        </small>
-      </div>
       <div>
         <small>
           Github:{" "}
