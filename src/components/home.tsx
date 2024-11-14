@@ -92,6 +92,17 @@ export const Home = ({ frogs }: { frogs: Frog[] }) => {
           </Link>
           !
         </p>
+        <p>
+          Note3: Someone else{" "}
+          <Link
+            href="https://github.com/derrix060/frog_collector"
+            target="_blank"
+          >
+            made a script
+          </Link>{" "}
+          to automate the link clicking. Thought it&apos;s pretty cool. DYOR
+          though.
+        </p>
         <div></div>
       </div>
       <Button className="my-6 w-full" size="lg" onClick={toggleScanner}>
